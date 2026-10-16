@@ -122,7 +122,7 @@ function showNotification(message, type, title) {
   document.body.append(notification);
 
   setTimeout(() => {
-    notification.style.visibility = 'hidden';
+    notification.remove();
   }, 3000);
 }
 
@@ -184,18 +184,22 @@ const inputSalary = document.createElement('input');
 inputName.name = 'name';
 inputName.type = 'text';
 inputName.setAttribute('data-qa', 'name');
+inputName.required = true;
 
 inputPos.name = 'position';
 inputPos.type = 'text';
 inputPos.setAttribute('data-qa', 'position');
+inputPos.required = true;
 
 inputAge.name = 'age';
 inputAge.type = 'number';
 inputAge.setAttribute('data-qa', 'age');
+inputAge.required = true;
 
 inputSalary.name = 'salary';
 inputSalary.type = 'number';
 inputSalary.setAttribute('data-qa', 'salary');
+inputSalary.required = true;
 
 labelName.append(inputName);
 labelPos.append(inputPos);
@@ -233,6 +237,7 @@ selectOffice.append(tokyoOpt, sngprOpt, londonOpt, nyOpt, ednbrghOpt, saOpt);
 form.append(labelName, labelPos, labelOffice, labelAge, labelSalary, btn);
 
 form.classList.add('new-employee-form');
+form.noValidate = true;
 
 form.addEventListener('submit', (e) => {
   e.preventDefault();
